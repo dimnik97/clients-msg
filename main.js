@@ -9,7 +9,7 @@ $( document ).ready(function() {
 	  }
 	});
 
-	$('.clients').on('click', $('li'), function(e){
+	$('.clients').on('click', $('li'), function(e){ // e чтобы определять, куда кликнули
 		$form = $('.add_edit_client');
 		$form[0].reset();
 		$('[name=mod]', $form).val('edit');
@@ -31,9 +31,9 @@ $( document ).ready(function() {
 
 	$('.OKbtn').on('click', function(){
 		$form = $('.add_edit_client');
-		$data = $form.serialize();
+		$data = $form.serialize(); //преобразуется в json
 
-		$.ajax({
+		$.ajax({ // вызывает по url и отправляет json $data
 			url: "add_edit_client.php",
 			type: "POST",
 		  	data: $data,
