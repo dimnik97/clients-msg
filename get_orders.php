@@ -11,10 +11,18 @@ if (mysqli_connect_errno()) {
 }
 
 
-$query = "SELECT * FROM clients ";
+$query = "SELECT ot.*,
+				 cl.id as cl_id,
+				 cl.name as cl_name,
+				 cl.surname as cl_surname,
+				 pr.id as pr_id,
+				 pr.name 
+		    FROM order_tbl as ot 
+			left join clients as cl on cl.id = ot.client 
+			left join products as pr on pr.id = ot.product ";
 
 if( isset($_POST['cid']) ) {
-	$query.= " where id = ".$_POST['cid'];
+	$query.= " where ot.id = ".$_POST['cid'];
 }
 $resArray = [];
 if ($result = $mysqli->query($query)) {
