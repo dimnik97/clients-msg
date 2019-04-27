@@ -11,7 +11,7 @@ if (mysqli_connect_errno()) {
 }
 
 
-$query = "SELECT * FROM clients ";
+$query = "SELECT * FROM children ";
 
 if( isset($_POST['cid']) ) {
 	$query.= " where id = ".$_POST['cid'];
